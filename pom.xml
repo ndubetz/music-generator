@@ -1,0 +1,316 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>ndubetz</groupId>
+  <artifactId>music-generator</artifactId>
+  <version>LOCAL-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <properties>
+    <this.newVersion>${kotlin.version}.RELEASE-SNAPSHOT</this.newVersion>
+
+    <kotlin.version>1.3.41</kotlin.version>
+    <kotlin.code.style>official</kotlin.code.style>
+    <arrow-kt.version>0.9.0</arrow-kt.version>
+    <rxkotlin.version>2.4.0</rxkotlin.version>
+    <kotlinx-coroutines.version>1.2.2</kotlinx-coroutines.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- starters -->
+      <dependency>
+        <groupId>com.autonomic</groupId>
+        <artifactId>au-starter-kotlin</artifactId>
+        <version>${this.newVersion}</version>
+      </dependency>
+
+      <!-- Kotlin stdlib -->
+      <dependency>
+        <groupId>org.jetbrains.kotlin</groupId>
+        <artifactId>kotlin-bom</artifactId>
+        <version>${kotlin.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!-- Arrow Kt -->
+      <dependency>
+        <groupId>io.arrow-kt</groupId>
+        <artifactId>arrow-core-data</artifactId>
+        <version>${arrow-kt.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.arrow-kt</groupId>
+        <artifactId>arrow-core-extensions</artifactId>
+        <version>${arrow-kt.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.arrow-kt</groupId>
+        <artifactId>arrow-validation</artifactId>
+        <version>${arrow-kt.version}</version>
+      </dependency>
+
+      <!-- Kotlin coroutines -->
+      <!-- https://github.com/Kotlin/kotlinx.coroutines/blob/master/kotlinx-coroutines-core/README.md -->
+      <dependency>
+        <groupId>org.jetbrains.kotlinx</groupId>
+        <artifactId>kotlinx-coroutines-core</artifactId>
+        <version>${kotlinx-coroutines.version}</version>
+      </dependency>
+      <!-- https://github.com/Kotlin/kotlinx.coroutines/blob/master/kotlinx-coroutines-test/README.md -->
+      <dependency>
+        <groupId>org.jetbrains.kotlinx</groupId>
+        <artifactId>kotlinx-coroutines-test</artifactId>
+        <version>${kotlinx-coroutines.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <!-- https://github.com/Kotlin/kotlinx.coroutines/blob/master/kotlinx-coroutines-debug/README.md -->
+      <dependency>
+        <groupId>org.jetbrains.kotlinx</groupId>
+        <artifactId>kotlinx-coroutines-debug</artifactId>
+        <version>${kotlinx-coroutines.version}</version>
+        <scope>runtime</scope>
+      </dependency>
+      <!-- https://github.com/Kotlin/kotlinx.coroutines/blob/master/reactive/kotlinx-coroutines-rx2/README.md -->
+      <dependency>
+        <groupId>org.jetbrains.kotlinx</groupId>
+        <artifactId>kotlinx-coroutines-rx2</artifactId>
+        <version>${kotlinx-coroutines.version}</version>
+      </dependency>
+      <!-- https://github.com/Kotlin/kotlinx.coroutines/blob/master/reactive/kotlinx-coroutines-reactor/README.md -->
+      <dependency>
+        <groupId>org.jetbrains.kotlinx</groupId>
+        <artifactId>kotlinx-coroutines-reactor</artifactId>
+        <version>${kotlinx-coroutines.version}</version>
+      </dependency>
+      <!-- https://github.com/Kotlin/kotlinx.coroutines/blob/master/reactive/kotlinx-coroutines-reactive/README.md -->
+      <dependency>
+        <groupId>org.jetbrains.kotlinx</groupId>
+        <artifactId>kotlinx-coroutines-reactive</artifactId>
+        <version>${kotlinx-coroutines.version}</version>
+      </dependency>
+      <!-- https://github.com/Kotlin/kotlinx.coroutines/blob/master/integration/kotlinx-coroutines-guava/README.md -->
+      <dependency>
+        <groupId>org.jetbrains.kotlinx</groupId>
+        <artifactId>kotlinx-coroutines-guava</artifactId>
+        <version>${kotlinx-coroutines.version}</version>
+      </dependency>
+      <!-- https://github.com/Kotlin/kotlinx.coroutines/blob/master/integration/kotlinx-coroutines-jdk8/README.md -->
+      <dependency>
+        <groupId>org.jetbrains.kotlinx</groupId>
+        <artifactId>kotlinx-coroutines-jdk8</artifactId>
+        <version>${kotlinx-coroutines.version}</version>
+      </dependency>
+
+      <!-- Rx Kotlin -->
+      <dependency>
+        <groupId>io.reactivex.rxjava2</groupId>
+        <artifactId>rxkotlin</artifactId>
+        <version>${rxkotlin.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-stdlib</artifactId>
+      <version>${kotlin.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-test</artifactId>
+      <version>${kotlin.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>RELEASE</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>3.11.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.jetbrains.kotlin</groupId>
+          <artifactId>kotlin-maven-plugin</artifactId>
+          <version>${kotlin.version}</version>
+          <configuration>
+            <jvmTarget>1.8</jvmTarget>
+            <compilerPlugins>
+              <plugin>spring</plugin>
+            </compilerPlugins>
+          </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>org.jetbrains.kotlin</groupId>
+              <artifactId>kotlin-maven-allopen</artifactId>
+              <version>${kotlin.version}</version>
+            </dependency>
+          </dependencies>
+          <executions>
+            <execution>
+              <id>compile</id>
+              <goals>
+                <goal>compile</goal>
+              </goals>
+              <phase>compile</phase>
+              <configuration>
+                <sourceDirs>
+                  <sourceDir>${project.basedir}/src/main/java</sourceDir>
+                </sourceDirs>
+              </configuration>
+            </execution>
+            <execution>
+              <id>test-compile</id>
+              <goals>
+                <goal>test-compile</goal>
+              </goals>
+              <phase>test-compile</phase>
+              <configuration>
+                <sourceDirs>
+                  <sourceDir>${project.basedir}/src/test/java</sourceDir>
+                </sourceDirs>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <executions>
+            <!-- Replacing default-compile as it is treated specially by maven -->
+            <execution>
+              <id>default-compile</id>
+              <phase>none</phase>
+            </execution>
+            <execution>
+              <id>default-testCompile</id>
+              <phase>none</phase>
+            </execution>
+
+            <!-- Adding java compile after the kotlin compile -->
+            <execution>
+              <id>java-compile</id>
+              <goals>
+                <goal>compile</goal>
+              </goals>
+              <phase>compile</phase>
+            </execution>
+            <execution>
+              <id>java-test-compile</id>
+              <goals>
+                <goal>testCompile</goal>
+              </goals>
+              <phase>test-compile</phase>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <!-- Plugins that get automatically deployed for anyone using au-parent-kotlin -->
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.jetbrains.kotlin</groupId>
+        <artifactId>kotlin-maven-plugin</artifactId>
+        <version>${kotlin.version}</version>
+        <executions>
+          <execution>
+            <id>compile</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>test-compile</id>
+            <phase>test-compile</phase>
+            <goals>
+              <goal>test-compile</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <!-- Plugins specifically for versioning and deploying this pom -->
+  <profiles>
+    <profile>
+      <id>au-parent-kotlin-dev</id>
+      <properties>
+        <license.inceptionYear>2019</license.inceptionYear>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>versions-maven-plugin</artifactId>
+            <configuration>
+              <generateBackupPoms>true</generateBackupPoms>
+            </configuration>
+            <executions>
+              <execution>
+                <id>this-version</id>
+                <goals>
+                  <goal>set</goal>
+                </goals>
+                <configuration>
+                  <newVersion>${this.newVersion}</newVersion>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>rc</id>
+      <activation>
+        <property>
+          <name>env.RC</name>
+        </property>
+      </activation>
+      <properties>
+        <this.newVersion>${kotlin.version}.RELEASE.RC-SNAPSHOT</this.newVersion>
+      </properties>
+    </profile>
+    <profile>
+      <id>release</id>
+      <activation>
+        <property>
+          <name>env.RELEASE</name>
+        </property>
+      </activation>
+      <properties>
+        <this.newVersion>${kotlin.version}.RELEASE</this.newVersion>
+      </properties>
+    </profile>
+    <profile>
+      <id>reset</id>
+      <properties>
+        <this.newVersion>LOCAL-SNAPSHOT</this.newVersion>
+      </properties>
+    </profile>
+  </profiles>
+
+</project>
