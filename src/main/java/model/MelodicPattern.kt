@@ -1,11 +1,15 @@
 package model
 
-var majorScale: IntArray = intArrayOf(0,2,4,5,7,9,11)
-var naturalMinor: IntArray = intArrayOf(0,2,3,5,7,8,10)
-var harmonicMinor: IntArray = intArrayOf(0,2,3,5,7,8,11)
-var melodicMinor: IntArray = intArrayOf(0,2,3,5,7,9,11)
+//sealed class MelodicPattern {
+//    data class MajorScale
+//}
 
-// TODO: Modes and proper representation
+val majorScale: IntArray = intArrayOf(0,2,4,5,7,9,11)
+val naturalMinor: IntArray = intArrayOf(0,2,3,5,7,8,10)
+val harmonicMinor: IntArray = intArrayOf(0,2,3,5,7,8,11)
+val melodicMinor: IntArray = intArrayOf(0,2,3,5,7,9,11)
+
+// TODO: Modes
 //    DORIAN,
 //    DORIAN_SHARP_4,
 //    DORIAN_FLAT_2,
